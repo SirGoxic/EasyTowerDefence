@@ -138,7 +138,7 @@ MonoBehaviour:
   damageIncreaseFactor: 0.2
   shootSpeed: 1
   shootSpeedIncreaseFactor: 0.2
-  levelUpPrice: 1
+  levelUpPrice: 10
   levelUpPriceIncreaseFactor: 2
   selector: {fileID: 1246015384950950835}
   shootTrace: {fileID: 788564420891607314, guid: fee9d4f07c20e1646b554b563910683d,

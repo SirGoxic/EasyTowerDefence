@@ -41,7 +41,7 @@ namespace TowerDefence.Player
             spawner.StartGameCourutine();
             
             for(int i = 0; i < towers.Count; i++){
-                towers[i].SetLevel(1);
+                towers[i].RestartTower();
             }
         }
     }

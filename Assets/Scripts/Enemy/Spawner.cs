@@ -170,6 +170,7 @@ namespace TowerDefence.Enemy
 
         private IEnumerator StartGame()
         {
+            waveCount = 0;
             while (gameStarted)
             {
                 waveCount++;

@@ -8,16 +8,19 @@ namespace TowerDefence.Tower{
 
         [SerializeField]
         protected float damage = 1f;
+        private float startDamage = 1f;
         [SerializeField]
         protected float damageIncreaseFactor = 1.5f; 
 
         [SerializeField]
         protected float shootSpeed = 2f;
+        private float startShootSpeed = 1f;
         [SerializeField]
         protected float shootSpeedIncreaseFactor = 1.2f; 
 
         [SerializeField]
         protected int levelUpPrice = 1;
+        private int startLevelUpPrice = 1;
         [SerializeField]
         protected int levelUpPriceIncreaseFactor = 2;
         protected int level = 1;
@@ -31,6 +34,12 @@ namespace TowerDefence.Tower{
 
         protected bool shooted = false;
 
+        private void Start(){
+            startDamage = damage;
+            startShootSpeed = shootSpeed;
+            startLevelUpPrice = levelUpPrice;
+        }
+
         public bool LevelUp(){
             if(Player.Player.GetGold() >= levelUpPrice){
                 Player.Player.RemoveGold(levelUpPrice);
@@ -43,15 +52,18 @@ namespace TowerDefence.Tower{
             return false;
         }
 
-        public void SetLevel(int level){
-            this.level = level;
-            ChangeLevel();
+        public void RestartTower(){
+            damage = startDamage;
+            shootSpeed = startShootSpeed;
+            levelUpPrice = startLevelUpPrice;
+
+            level = 1;
         }
 
         protected void ChangeLevel(){
             damage += damageIncreaseFactor * (1f + level * 0.1f);
             shootSpeed += shootSpeedIncreaseFactor * (1f + level * 0.1f);
-            levelUpPrice = levelUpPrice * levelUpPriceIncreaseFactor * level >> 1;
+            levelUpPrice += (int)(levelUpPriceIncreaseFactor * (1f + level * 0.1f));
         }
 
         public int GetLevel(){
